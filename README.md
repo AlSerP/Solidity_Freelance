@@ -8,6 +8,10 @@ $ git clone https://github.com/AlSerP/Solidity_Freelance
 
 ## Работа с *git*
 
+```bash
+$ git remote add origin https://github.com/AlSerP/Solidity_Freelance.git
+```
+
 Загрузить изменения с репозитория:
 
 ```bash
