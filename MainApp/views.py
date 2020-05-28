@@ -5,8 +5,13 @@ from django.contrib.auth.hashers import make_password
 from django.contrib import auth
 from django.http import HttpResponse, HttpResponseNotFound
 from .forms import New_User, New_Wallet
-from .models import Wallet
+from .models import Wallet, Task
 from django.http import Http404
+
+
+
+
+
 
 
 def index(request):
@@ -61,3 +66,15 @@ def user_status(request):
     context = {'info': info, 'wallet': wallet}
     return render(request, "info.html", context)
 
+def create_task(request):
+    if request.method == 'POST':
+        name = request.get('name')
+        description = request.get('describe')
+        cost = request.get('cost')
+        u = request.user
+        task = Task(user=u, cost=cost, name=name, describe=description)
+
+def all_tasks(request):
+    tasks = Task.objects.all()
+    context ={'tasks':tasks}
+    return render(request,"tasks.html", context)
