@@ -60,4 +60,3 @@ def user_status(request):
     wallet = Wallet.objects.get(user_id=u)
     context = {'info': info, 'wallet': wallet}
     return render(request, "info.html", context)
-
