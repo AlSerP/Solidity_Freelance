@@ -11,8 +11,10 @@ def index(request):
     return render(request, "mian.html")
 
 
+"""
 def register(request):
     if request.method == 'POST':
+
         wallet = New_Wallet(request.POST)
         form = New_User(request.POST)
         if form.is_valid() and wallet.is_valid():
@@ -34,5 +36,22 @@ def register(request):
 
     context = {'form': form, 'wallet': wallet}
     return render(request, 'register.html', context)
+"""
 
 
+def register(request):
+    if request.method == 'POST':
+        username = request.get('username')
+        password = request.get('password')
+        email = request.get('email')
+        name = request.get('first_name')
+        surname = request.get('last_name')
+        new_wal = request.get('wallet')
+        user = User(username=username, password=make_password(password), email=email, first_name=name,
+                    last_name=surname)
+        user.save()
+        wallet = Wallet(wallet=new_wal, user_id=user.id)
+        wallet.save()
+        auth.login(request, user)
+
+    return render(request, 'register.html')
