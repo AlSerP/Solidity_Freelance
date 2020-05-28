@@ -19,5 +19,6 @@ from MainApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index)
+    path('', index),
+    path('reg', register)
 ]
