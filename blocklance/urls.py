@@ -22,7 +22,9 @@ urlpatterns = [
     path('', index),
     path('reg', register),
     path('login', login_page),
-    path('logout', logout_page),
-    path('user_info', user_info)
+    path('new_task', new_task),
+    path('user/logout', logout_page),
+    path('user/create_task', create_task),
+    path('user/<int:u_id>', user_info),
 ]
 

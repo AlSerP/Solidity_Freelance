@@ -6,12 +6,14 @@ from django.contrib import auth
 from django.contrib.auth import logout
 from django.http import HttpResponse, HttpResponseNotFound
 from .forms import New_User, New_Wallet
+import datetime
 from .models import Wallet, Task
 from django.http import Http404
 
 
 def index(request):
-    return render(request, "main.html")
+    tasks = Task.objects.all()
+    return render(request, "main.html", {"tasks": tasks})
 
 
 def register(request):
@@ -26,10 +28,11 @@ def register(request):
         user = User(username=username, password=make_password(password), email=email, first_name=name,
                     last_name=surname)
         user.save()
-        # TODO: закоменченная херня снизу не работает
         wallet = Wallet(wallet=new_wal, user_id=user.id)
         wallet.save()
         auth.login(request, user)
+
+        return redirect("/")
 
     return render(request, 'register.html')
     # return redirect("/")
@@ -62,15 +65,20 @@ def logout_page(request):
     return redirect('/')
 
 
-def user_info(request):
-    user_info = request.user
+def user_info(request, u_id):
+    """Get user's info by his id"""
+    for user in User.objects.all():
+        print(user.id)
+    print('Hi')
+    u_info = User.objects.get(id=u_id)
     # info = UserInfo.objects.get(userid=user_info.pk)
     # return render(request, 'user_info.html', {"info": info, "user_info": user_info})
-    return render(request, 'user_info.html', {"user_info": user_info})
+    return render(request, 'user_info.html', {"user_info": u_info})
 
 
 @login_required()
 def user_status(request):
+    """Unused"""
     u = request.user.pk
     info = User.objects.get(id=u)
     wallet = Wallet.objects.get(user_id=u)
@@ -78,16 +86,33 @@ def user_status(request):
     return render(request, "info.html", context)
 
 
+def new_task(request):
+    """Render page of new task creations"""
+    return render(request, "new_task.html")
+
+
 def create_task(request):
-    if request.method == 'POST':
-        name = request.get('name')
-        description = request.get('describe')
-        cost = request.get('cost')
-        u = request.user
-        task = Task(user=u, cost=cost, name=name, describe=description)
+    """Creates a new task in D  B"""
+    if request.method == "POST":
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        reward = request.POST.get("cost")
+        date = datetime.datetime.now()
+        creator = request.user
+
+        print(title, description, reward, creator, "Creating task")
+        task = Task(title=title, description=description, cost=reward, date=date,
+                    creator=creator.username, creator_id=creator.id)
+        task.save()
+        print("Task is created")
+        return redirect('/')
+    else:
+        print("HUGE PROBLEM")
+        raise Http404
 
 
 def all_tasks(request):
+    """Unused"""
     tasks = Task.objects.all()
     context = {'tasks': tasks}
     return render(request, "tasks.html", context)

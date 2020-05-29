@@ -8,7 +8,10 @@ class Wallet(models.Model):
 
 
 class Task(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
-    describe = models.TextField()
-    cost = models.IntegerField()
+    title = models.CharField(max_length=127)
+    description = models.CharField(max_length=255, default=None)
+    cost = models.FloatField()
+    date = models.DateField()
+    creator = models.CharField(max_length=127)
+    creator_id = models.IntegerField()
+    submit_user_id = models.IntegerField(default=0)  # User, who started to do the task
