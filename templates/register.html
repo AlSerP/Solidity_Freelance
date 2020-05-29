@@ -51,15 +51,24 @@
 
               <div class="form-group row">
                 <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary">Register</button>
+                  <button id="register" type="submit" class="btn btn-primary">Register</button>
                 </div>
               </div>
                 
             </form>   
                 
-                
+
                 
           </div>  
       </div>
       {% endblock %}
-    
+{% block scripts%}
+<script>
+    const ethereumButton =document.getElementById('register');
+
+ethereumButton.addEventListener('click', () => {
+  //Will Start the metamask extension
+  ethereum.enable();
+});
+</script>
+    {% endblock %}
