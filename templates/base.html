@@ -1,48 +1,60 @@
 <!doctype html>
 <html lang="ru">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Название</title>
-  </head>
-  <body style="background-image: url(https://i.pinimg.com/originals/b7/10/11/b7101191321f7d9f75ccf387480a24e7.jpg); background-attachment: scroll; background-repeat: repeat; background-size: 25%;">
-    <!-- -moz-background-size: 100%; -webkit-background-size: 100%; -o-background-size: 100%; background-size: 100%; -->
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="/">Название</a>
-      {% if user.is_authenticated %}
-              <div class="justify-content-end form-inline">
-                <h6 style=" margin: 5px;">Hello {{ user.username }}</h6>
-                <a class="btn btn-outline-primary my-2 my-sm-0" type="button" href="/logout">Выйти</a>
-        </div>
-      {% else %}
-      <div class="justify-content-end form-inline">
-            <div class="dropdown">
-              <button class="btn btn-outline-primary my-2 my-sm-0 " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign in</button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <form class="form-group" action="/login" method="post">{% csrf_token %}
-                    <input type="text" style="margin: 5px;" class="form-control form-control-sm" id="exampleDropdownFormEmail1" placeholder="username" name="username">
-                    <input type="password" style="margin: 5px;" class="form-control form-control-sm" id="exampleDropdownFormPassword1" placeholder="password" name="password">
-                    <button type="submit" style="margin: 5px;" class="btn btn-primary btn-sm">Sign in</button>
-                  </form>
-              </div>
+    <title>BlockLance</title>
+</head>
+<body style="background-image: url(https://imgpile.com/images/1ca9a6411826f995b82dc3f2348d0cf1.jpg); background-attachment: fixed">
+<!-- -moz-background-size: 100%; -webkit-background-size: 100%; -o-background-size: 100%; background-size: 100%; -->
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" style="margin-left: 5%;" href="/">BlockLance</a>
+    {% if user.is_authenticated %}
+    <div class="justify-content-end form-inline">
+        <h6 style="margin: 5px; margin-right: 20px;">Hello <a href="/user/{{ user.username }}   ">{{ user.username
+            }}</a></h6>
+        <a class="btn btn-outline-primary my-2 my-sm-0" type="button" href="/logout">Log out</a>
+    </div>
+    {% else %}
+    <div class="justify-content-end form-inline" style="margin-right: 5%;">
+        <div class="dropdown">
+            <button class="btn btn-outline-black my-2 my-sm-0 " type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign in
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <form class="form-group" action="/login" method="post">{% csrf_token %}
+                    <input type="text" style="margin: 5px;" class="form-control form-control-sm"
+                           id="exampleDropdownFormEmail1" placeholder="username" name="username">
+                    <input type="password" style="margin: 5px;" class="form-control form-control-sm"
+                           id="exampleDropdownFormPassword1" placeholder="password" name="password">
+                    <button type="submit" style="margin: 5px;" class="btn btn-black btn-sm">Sign in</button>
+                </form>
             </div>
-<!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign in</button>-->
-            <p style="margin-left: 10px; margin-right: 10px; margin-top: 5%;">or</p>
-            <a class="btn btn-outline-primary my-2 my-sm-0" type="button" href="reg">Register</a>
         </div>
-            {% endif %}
-    </nav>
-    {% block content %}
-    {% endblock %}
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </body>
+        <!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign in</button>-->
+        <p style="margin-left: 10px; margin-right: 10px; margin-top: 5%;">or</p>
+        <a class="btn btn-outline-black my-2 my-sm-0" type="button" href="reg">Register</a>
+    </div>
+    {% endif %}
+</nav>
+{% block content %}
+{% endblock %}
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
 </html>
