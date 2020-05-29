@@ -27,9 +27,9 @@ def register(request):
                     last_name=surname)
         user.save()
         # TODO: закоменченная херня снизу не работает
-        # wallet = Wallet(wallet=new_wal, user_id=user.id)
-        # wallet.save()
-        # auth.login(request, user)
+        wallet = Wallet(wallet=new_wal, user_id=user.id)
+        wallet.save()
+        auth.login(request, user)
 
     return render(request, 'register.html')
     # return redirect("/")
