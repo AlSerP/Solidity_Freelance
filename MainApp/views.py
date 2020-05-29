@@ -11,7 +11,7 @@ from django.http import Http404
 
 
 def index(request):
-    return render(request, "mian.html")
+    return render(request, "main.html")
 
 
 def register(request):
@@ -31,9 +31,8 @@ def register(request):
         # wallet.save()
         # auth.login(request, user)
 
-    # return render(request, 'register.html')
-    return redirect("/")
-
+    return render(request, 'register.html')
+    # return redirect("/")
 
 
 def login_page(request):
@@ -63,7 +62,6 @@ def logout_page(request):
     return redirect('/')
 
 
-
 @login_required()
 def user_status(request):
     u = request.user.pk
@@ -72,6 +70,7 @@ def user_status(request):
     context = {'info': info, 'wallet': wallet}
     return render(request, "info.html", context)
 
+
 def create_task(request):
     if request.method == 'POST':
         name = request.get('name')
@@ -79,6 +78,7 @@ def create_task(request):
         cost = request.get('cost')
         u = request.user
         task = Task(user=u, cost=cost, name=name, describe=description)
+
 
 def all_tasks(request):
     tasks = Task.objects.all()
