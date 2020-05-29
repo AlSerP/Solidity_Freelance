@@ -24,3 +24,4 @@ urlpatterns = [
     path('login', login_page),
     path('logout', logout_page)
 ]
+
