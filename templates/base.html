@@ -8,15 +8,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 
     <title>BlockLance</title>
 </head>
-<body style="background-image: url(https://imgpile.com/images/1ca9a6411826f995b82dc3f2348d0cf1.jpg); background-attachment: fixed">
+<body style="background-image: url(https://imgpile.com/images/1ca9a6411826f995b82dc3f2348d0cf1.jpg); background-attachment: fixed; font-family: 'Quicksand', sans-serif;">
 <!-- -moz-background-size: 100%; -webkit-background-size: 100%; -o-background-size: 100%; background-size: 100%; -->
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" style="margin-left: 5%;" href="/">BlockLance</a>
     {% if user.is_authenticated %}
-    <div class="justify-content-end form-inline">
+    <div class="justify-content-end form-inline" style="margin-right: 5%;">
         <h6 style="margin: 5px; margin-right: 20px;">Hello <a href="/user_info">{{ user.username }}</a></h6>
         <a class="btn btn-outline-primary my-2 my-sm-0" type="button" href="/logout">Log out</a>
     </div>
