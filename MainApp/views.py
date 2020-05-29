@@ -27,12 +27,12 @@ def register(request):
                     last_name=surname)
         user.save()
         # TODO: закоменченная херня снизу не работает
-        # wallet = Wallet(wallet=new_wal, user_id=user.id)
-        # wallet.save()
-        # auth.login(request, user)
+        wallet = Wallet(wallet=new_wal, user_id=user.id)
+        wallet.save()
+        auth.login(request, user)
 
-    # return render(request, 'register.html')
-    return redirect("/")
+    return render(request, 'register.html')
+    # return redirect("/")
 
 
 
@@ -61,6 +61,13 @@ def login_page(request):
 def logout_page(request):
     logout(request)
     return redirect('/')
+
+
+def userinfo(request):
+    user_info = request.user
+    # info = UserInfo.objects.get(userid=user_info.pk)
+    # return render(request, 'user_info.html', {"info": info, "user_info": user_info})
+    return render(request, 'user_info.html', {"user_info": user_info})
 
 
 
