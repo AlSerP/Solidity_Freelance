@@ -27,9 +27,9 @@ def register(request):
                     last_name=surname)
         user.save()
         # TODO: закоменченная херня снизу не работает
-        # wallet = Wallet(wallet=new_wal, user_id=user.id)
-        # wallet.save()
-        # auth.login(request, user)
+        wallet = Wallet(wallet=new_wal, user_id=user.id)
+        wallet.save()
+        auth.login(request, user)
 
     return render(request, 'register.html')
     # return redirect("/")
@@ -62,6 +62,13 @@ def logout_page(request):
     return redirect('/')
 
 
+def userinfo(request):
+    user_info = request.user
+    # info = UserInfo.objects.get(userid=user_info.pk)
+    # return render(request, 'user_info.html', {"info": info, "user_info": user_info})
+    return render(request, 'user_info.html', {"user_info": user_info})
+
+
 @login_required()
 def user_status(request):
     u = request.user.pk
@@ -82,5 +89,5 @@ def create_task(request):
 
 def all_tasks(request):
     tasks = Task.objects.all()
-    context ={'tasks':tasks}
-    return render(request,"tasks.html", context)
+    context = {'tasks': tasks}
+    return render(request, "tasks.html", context)
