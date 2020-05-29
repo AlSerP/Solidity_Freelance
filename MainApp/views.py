@@ -62,7 +62,7 @@ def logout_page(request):
     return redirect('/')
 
 
-def userinfo(request):
+def user_info(request):
     user_info = request.user
     # info = UserInfo.objects.get(userid=user_info.pk)
     # return render(request, 'user_info.html', {"info": info, "user_info": user_info})
