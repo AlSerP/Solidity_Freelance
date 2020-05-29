@@ -8,19 +8,25 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Название</title>
   </head>
   <body style="background-image: url(https://i.pinimg.com/originals/b7/10/11/b7101191321f7d9f75ccf387480a24e7.jpg); background-attachment: scroll; background-repeat: repeat; background-size: 25%;">
     <!-- -moz-background-size: 100%; -webkit-background-size: 100%; -o-background-size: 100%; background-size: 100%; -->
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
       <a class="navbar-brand" href="/">Название</a>
-        <div class="justify-content-end form-inline">
+      {% if user.is_authenticated %}
+              <div class="justify-content-end form-inline">
+                <h6 style=" margin: 5px;">Hello {{ user.username }}</h6>
+                <a class="btn btn-outline-primary my-2 my-sm-0" type="button" href="/logout">Выйти</a>
+        </div>
+      {% else %}
+      <div class="justify-content-end form-inline">
             <div class="dropdown">
               <button class="btn btn-outline-primary my-2 my-sm-0 " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign in</button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <form class="form-group">
-                    <input type="email" style="margin: 5px;" class="form-control form-control-sm" id="exampleDropdownFormEmail1" placeholder="email or hash">
-                    <input type="password" style="margin: 5px;" class="form-control form-control-sm" id="exampleDropdownFormPassword1" placeholder="password">
+                  <form class="form-group" action="/login" method="post">{% csrf_token %}
+                    <input type="text" style="margin: 5px;" class="form-control form-control-sm" id="exampleDropdownFormEmail1" placeholder="username" name="username">
+                    <input type="password" style="margin: 5px;" class="form-control form-control-sm" id="exampleDropdownFormPassword1" placeholder="password" name="password">
                     <button type="submit" style="margin: 5px;" class="btn btn-primary btn-sm">Sign in</button>
                   </form>
               </div>
@@ -29,6 +35,8 @@
             <p style="margin-left: 10px; margin-right: 10px; margin-top: 5%;">or</p>
             <a class="btn btn-outline-primary my-2 my-sm-0" type="button" href="reg">Register</a>
         </div>
+            {% endif %}
+
     </nav>
     {% block content %}
     {% endblock %}
