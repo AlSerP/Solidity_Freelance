@@ -33,7 +33,13 @@
                                 <a href="/user/{{ task_info.user.id }}" class="card-text">{{ task_info.user.username }}</a>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-outline-dark">Take task</a>
+                        {% if task_info.taked %}
+                            {% if task_info.submit_user_id == user.id %}
+                                <a href="#" class="btn btn-outline-dark">Complete task</a>
+                            {% endif %}
+                        {% else %}
+                            <a href="#" class="btn btn-outline-dark">Take task</a>
+                        {% endif %}
                         <!--<button href="#" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Register</button>-->
                     </div>
                 </div>

@@ -13,8 +13,6 @@ class Task(models.Model):
     cost = models.FloatField()
     date = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-
-class Submitted_tasks(models.Model):
-    sumbit_user_id = models.IntegerField()
-    task_id = models.ForeignKey(Task,on_delete=models.CASCADE)
+    submit_user_id = models.IntegerField(default=1)
+    taked = models.BooleanField(default=False)
+    applied = models.BooleanField(default=False)
