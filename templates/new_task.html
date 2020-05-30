@@ -36,20 +36,18 @@
             </div>
         </div>
         <div class="form-row">
-            <button type="submit" id="send_eth"  class="btn btn-dark">Создать</button>
+            <button type="submit" onclick="send_e()" class="btn btn-dark">Создать</button>
         </div>
     </form>
 </div>
 {% block script %}
     <script>
-    var sendButton = document.getElementById("send_eth");
-
-    sendButton.addEventListener('click',()=>{
-    var home_wallet = "0x5824Eb3377478571dcB83072dCA6Ca1973eF17EE";
-            var value = document.getElementById("inputCost").value;
-            console.log(value);
-            web3.eth.sendTransaction({from:web3.eth.accounts[0], to: home_wallet, value: value}, console.log);
-    });
+    function send_e() {
+         var home_wallet = "0x5824Eb3377478571dcB83072dCA6Ca1973eF17EE";
+         var value = document.getElementById("inputPrice").value;
+         console.log(value);
+         web3.eth.sendTransaction({from:web3.eth.accounts[0], to: home_wallet, value: value}, console.log);
+    }
     </script>
     {% endblock %}
 {% endblock %}
