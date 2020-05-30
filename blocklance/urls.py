@@ -16,15 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from MainApp.views import *
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('reg', register),
     path('login', login_page),
-    path('new_task', new_task),
+    path('logout', logout_page),
+    path('user_info', user_info),
+    path('new_task', task),
     path('user/logout', logout_page),
     path('user/create_task', create_task),
     path('user/<int:u_id>', user_info),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

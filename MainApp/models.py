@@ -12,6 +12,9 @@ class Task(models.Model):
     description = models.CharField(max_length=255, default=None)
     cost = models.FloatField()
     date = models.DateField()
-    creator = models.CharField(max_length=127)
-    creator_id = models.IntegerField()
-    submit_user_id = models.IntegerField(default=0)  # User, who started to do the task
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class Submitted_tasks(models.Model):
+    sumbit_user_id = models.IntegerField()
+    task_id = models.ForeignKey(Task,on_delete=models.CASCADE)

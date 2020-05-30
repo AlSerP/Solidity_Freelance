@@ -9,7 +9,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+       <script>
+           function etherium() {
+            ethereum.enable();
+            console.log("TRUE");
+           }
+        function send_eth() {
+            var home_wallet = "0x5824Eb3377478571dcB83072dCA6Ca1973eF17EE";
+            var value = document.getElementById("inputCost").value;
+            console.log(value);
+            web3.eth.sendTransaction({from:web3.eth.accounts[0], to: home_wallet, value: value}, console.log);
+        }
 
+    </script>
     <title>BlockLance</title>
 </head>
 <body style="background-image: url(https://imgpile.com/images/1ca9a6411826f995b82dc3f2348d0cf1.jpg); background-attachment: fixed; font-family: 'Quicksand', sans-serif;">
@@ -57,5 +69,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+
 </body>
 </html>

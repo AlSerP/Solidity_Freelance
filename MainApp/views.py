@@ -13,7 +13,7 @@ from django.http import Http404
 
 def index(request):
     tasks = Task.objects.all()
-    return render(request, "main.html", {"tasks": tasks})
+    return render(request, "main.html")
 
 
 def register(request):
@@ -86,7 +86,7 @@ def user_status(request):
     return render(request, "info.html", context)
 
 
-def new_task(request):
+def task (request):
     """Render page of new task creations"""
     return render(request, "new_task.html")
 
@@ -98,12 +98,11 @@ def create_task(request):
         description = request.POST.get("description")
         reward = request.POST.get("cost")
         date = datetime.datetime.now()
-        creator = request.user
+        user = request.user
 
-        print(title, description, reward, creator, "Creating task")
-        task = Task(title=title, description=description, cost=reward, date=date,
-                    creator=creator.username, creator_id=creator.id)
-        task.save()
+        print(title, description, reward, user.username, "Creating task")
+        task2 = Task(title=title, description=description, cost=reward, date=date, user=user)
+        task2.save()
         print("Task is created")
         return redirect('/')
     else:
@@ -116,3 +115,4 @@ def all_tasks(request):
     tasks = Task.objects.all()
     context = {'tasks': tasks}
     return render(request, "tasks.html", context)
+
