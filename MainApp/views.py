@@ -12,6 +12,7 @@ from django.http import Http404
 
 
 def index(request):
+    """Main page with all tasks"""
     tasks = Task.objects.all()
     return render(request, "main.html", {"tasks": tasks})
 
@@ -108,11 +109,4 @@ def create_task(request):
     else:
         print("HUGE PROBLEM")
         raise Http404
-
-
-def all_tasks(request):
-    """Unused"""
-    tasks = Task.objects.all()
-    context = {'tasks': tasks}
-    return render(request, "tasks.html", context)
 
