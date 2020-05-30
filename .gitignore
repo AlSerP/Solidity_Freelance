@@ -1,0 +1,4 @@
+.idea/
+MainApp/__pycache__/
+blocklance/__pycache__/
+db.sqlite3
