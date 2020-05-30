@@ -13,7 +13,7 @@ contract = web3.eth.contract(address="0xeEF339ecB6c9E6f9d22ba1AE80FE9c8B3C0ae252
 
 main_wallet = "0x37aF4b6d5Eb749168ce1d2Bce867725c292D6777"
 
-
+homie ="0x5824Eb3377478571dcB83072dCA6Ca1973eF17EE"
 def send(from_wallet, to_wallet, value):
     web3.eth.account = from_wallet
     contract_send = contract.functions.send(to_wallet).buildTransaction({
