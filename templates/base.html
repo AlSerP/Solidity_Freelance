@@ -18,8 +18,9 @@
     <a class="navbar-brand" style="margin-left: 5%;" href="/">BlockLance</a>
     {% if user.is_authenticated %}
     <div class="justify-content-end form-inline" style="margin-right: 5%;">
-        <h6 style="margin: 5px; margin-right: 20px;">Hello <a href="/user_info">{{ user.username }}</a></h6>
-        <a class="btn btn-outline-primary my-2 my-sm-0" type="button" href="/logout">Log out</a>
+        <a href="/new_task" style="margin-right: 20px; color: black;">Create task</a>
+        <h6 style="margin: 5px; margin-right: 30px;">Hello <a href="/user/{{ user.id }}">{{ user.username }}</a></h6>
+        <a class="btn btn-outline-primary my-2 my-sm-0" type="button" href="/user/logout">Log out</a>
     </div>
     {% else %}
     <div class="justify-content-end form-inline" style="margin-right: 5%;">

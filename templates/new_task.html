@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <form method="post" class="bg-light" action="/user/create_task" style="margin-top: 80px; padding: 80px;">{% csrf_token %}
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="md-form form-group">
+                    <input type="text" name="title" class="form-control" id="inputName">
+                    <label for="inputName">Title</label>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="md-form form-group">
+                    <input type="text" class="form-control" id="inputPassword4MD" placeholder="{{ user.username }}" readonly>
+                    <label for="inputPassword4MD">Creator</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="md-form form-group">
+                    <textarea name="description" id="text_area" class="form-control"></textarea>
+                    <label for="text_area">About task</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="md-form form-group">
+                    <input type="text" name="cost" class="form-control" id="inputPrice" placeholder="0.0">
+                    <label for="inputPrice">Price (ETH)</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <button type="submit" class="btn btn-dark">Создать</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

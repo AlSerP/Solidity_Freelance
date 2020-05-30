@@ -8,7 +8,13 @@ class Wallet(models.Model):
 
 
 class Task(models.Model):
+    title = models.CharField(max_length=127)
+    description = models.CharField(max_length=255, default=None)
+    cost = models.FloatField()
+    date = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
-    describe = models.TextField()
-    cost = models.IntegerField()
+
+
+class Submitted_tasks(models.Model):
+    sumbit_user_id = models.IntegerField()
+    task_id = models.ForeignKey(Task,on_delete=models.CASCADE)

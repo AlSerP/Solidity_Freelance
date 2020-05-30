@@ -1,13 +1,11 @@
 <div class="card col-12 col-sm-5 col-md-5 col-xl-5" style="padding: 2%; margin: 5px 10px;">
     <div class="card-body">
         <div class="row">
-            <h5 class="card-title col-md-10">Lorem ipsum</h5>
-            <a class="col-md-2" href="#">author</a>
-            <span class="badge badge-pill badge-dark" style="margin-left: 15px;">tag</span>
+            <h5 class="card-title col-md-10">{{ task.title }}</h5>
+            <a class="col-md-2" href="/user/{{ task.creator_id }}">{{ task.creator }}</a>
+            <span class="badge badge-pill badge-dark" style="margin-left: 15px;">tags</span>
         </div>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias cumque eius esse
-            id iusto perferendis quibusdam. Alias aspernatur, corporis doloribus ex fugit neque nisi nobis
-            obcaecati odio quo soluta voluptas.</p>
+        <p class="card-text">{{ task.description }}</p>
         <a href="#" class="btn btn-outline-dark">More about</a>
     </div>
 </div>
