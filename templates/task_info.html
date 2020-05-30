@@ -22,7 +22,7 @@
                                 <h5 class="card-text">description:</h5>
                             </div>
                             <div class="col-10">
-                                <h3 class="card-text">{{ task_info.description }}</h3>
+                                <p class="card-text">{{ task_info.description }}</p>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -30,16 +30,12 @@
                                 <h5 class="card-text">author:</h5>
                             </div>
                             <div class="col-10">
-                                <h3 class="card-text">{{ task_info.user.username }}</h3>
+                                <a href="/user/{{ task_info.user.id }}" class="card-text">{{ task_info.user.username }}</a>
                             </div>
                         </div>
                         <a href="#" class="btn btn-outline-dark">Take task</a>
                         <!--<button href="#" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Register</button>-->
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <img src="https://img2.freepng.ru/20180714/ikw/kisspng-computer-icons-user-experience-user-profile-icon-d-taekwondo-boys-5b498ed2816d40.9775850815315473465301.jpg"
-                         class="card-img" alt="...">
                 </div>
             </div>
         </div>
