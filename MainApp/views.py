@@ -77,6 +77,11 @@ def user_info(request, u_id):
     return render(request, 'user_info.html', {"user_info": u_info})
 
 
+def task_info(request, t_id):
+    t_info = Task.objects.get(id=t_id)
+    return render(request, 'task_info.html', {"task_info": t_info})
+
+
 @login_required()
 def user_status(request):
     """Unused"""

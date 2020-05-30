@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container" style="margin-top: 7%; margin-left: 5%; margin-right: 5%; max-width: 90%;">
+    <div class="justify-content-md-center">
+
+        <div class="card mb-3" style="padding: 80px;">
+            <div class="row no-gutters">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-2">
+                                <h5 class="card-title">Title:</h5>
+                            </div>
+                            <div class="col-10">
+                                <h3 class="card-title">{{ task_info.title }}</h3>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-2">
+                                <h5 class="card-text">description:</h5>
+                            </div>
+                            <div class="col-10">
+                                <h3 class="card-text">{{ task_info.description }}</h3>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-2">
+                                <h5 class="card-text">author:</h5>
+                            </div>
+                            <div class="col-10">
+                                <h3 class="card-text">{{ task_info.user.username }}</h3>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline-dark">Take task</a>
+                        <!--<button href="#" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Register</button>-->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://img2.freepng.ru/20180714/ikw/kisspng-computer-icons-user-experience-user-profile-icon-d-taekwondo-boys-5b498ed2816d40.9775850815315473465301.jpg"
+                         class="card-img" alt="...">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

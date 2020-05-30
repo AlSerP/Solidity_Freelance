@@ -31,5 +31,6 @@ urlpatterns = [
     path('user/logout', logout_page),
     path('user/create_task', create_task),
     path('user/<int:u_id>', user_info),
+    path('task/<int:t_id>', task_info),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
